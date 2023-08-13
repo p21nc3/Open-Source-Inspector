@@ -1,2 +1,3 @@
 # Open-Source-Inspector
-The hero of the open source community, protecting developers and users from malicious actors.
+
+There are two types of repositories in the world of open source software: good and poor. Good repositories are maintained by devoted developers who care about security and quality. Malicious attackers establish bogus repositories in order to exploit vulnerabilities and steal data. The Open Source Inspector is a tool that assists you in distinguishing between excellent and problematic repositories. It scans repositories for security vulnerabilities using a range of methodologies, including code analysis, vulnerability scanning, and reputation analysis. The OSS Inspector also generates extensive reports on the security of your repositories, allowing you to make educated judgements about which repositories to utilise. The only tool you need to assure the security of your open source software is the Open Source Inspector.
