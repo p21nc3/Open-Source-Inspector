@@ -30,11 +30,11 @@ import (
 
 const (
 	// githubAppKeyPath is the path to file for GitHub App key.
-	githubAppKeyPath = "GITHUB_APP_KEY_PATH"
+	githubAppKeyPath = "D:/bhardwaj/Git.Site/Open-Source-Inspector/open-source-inspector.2023-11-07.private-key.pem"
 	// githubAppID is the app ID for the GitHub App.
-	githubAppID = "GITHUB_APP_ID"
+	githubAppID = "423807"
 	// githubAppInstallationID is the installation ID for the GitHub App.
-	githubAppInstallationID = "GITHUB_APP_INSTALLATION_ID"
+	githubAppInstallationID = "423807"
 )
 
 // NewTransport returns a configured http.Transport for use with GitHub.
