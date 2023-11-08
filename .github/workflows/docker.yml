@@ -1,0 +1,88 @@
+# Copyright 2021 OpenSSF Scorecard Authors
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+permissions:
+  contents: read
+
+name: docker-build
+
+on:
+ pull_request:
+  branches:
+  - main
+
+env:
+  GO_VERSION: 1.21
+
+jobs:
+  docs_only_check:
+    name: Check for docs-only change
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      docs_only: ${{ steps.docs_only_check.outputs.docs_only }}
+    steps:
+    - name: Check out code
+      uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 #v4.1.1
+      with:
+        fetch-depth: 2 # needed to diff changed files
+    - id: files
+      name: Get changed files
+      uses: tj-actions/changed-files@95690f9ece77c1740f4a55b7f1de9023ed6b1f87 #v39.2.3
+      with:
+        files_ignore: '**.md'
+    - id: docs_only_check
+      if: steps.files.outputs.any_changed != 'true'
+      name: Check for docs-only changes
+      run: echo "docs_only=true" >> $GITHUB_OUTPUT
+
+  docker_matrix:
+    strategy:
+      matrix:
+        target:
+          - 'scorecard-docker'
+          - 'cron-controller-docker'
+          - 'cron-worker-docker'
+          - 'cron-cii-worker-docker'
+          - 'cron-bq-transfer-docker'
+          - 'cron-webhook-docker'
+          - 'cron-github-server-docker'
+          - 'build-attestor-docker'
+    name: ${{ matrix.target }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    needs: docs_only_check
+    # ideally we put one "if" here, but due to how skipped matrix jobs work, we need one for each each step
+    # https://github.com/orgs/community/discussions/9141
+    steps:
+     - name: Harden Runner
+       if: (needs.docs_only_check.outputs.docs_only != 'true')
+       uses: step-security/harden-runner@1b05615854632b887b69ae1be8cbefe72d3ae423 # v2.6.0
+       with:
+         egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+     - name: Clone the code
+       if: (needs.docs_only_check.outputs.docs_only != 'true')
+       uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+     - name: Setup Go # needed for some of the Makefile evaluations, even if building happens in Docker 
+       if: (needs.docs_only_check.outputs.docs_only != 'true')
+       uses: actions/setup-go@93397bea11091df50f3d7e59dc26a7711a8bcfbe # v4.1.0
+       with:
+         go-version: ${{ env.GO_VERSION }}
+         check-latest: true
+         cache: false # the building happens in Docker, so saving this cache would negatively impact other builds
+     - name: docker build
+       if: (needs.docs_only_check.outputs.docs_only != 'true')
+       run: make ${{ matrix.target }}
