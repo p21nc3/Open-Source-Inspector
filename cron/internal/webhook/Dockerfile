@@ -24,6 +24,6 @@ ARG TARGETOS
 ARG TARGETARCH
 RUN CGO_ENABLED=0 make build-webhook
 
-FROM gcr.io/distroless/base:nonroot@sha256:29da700a46816467c7cb91058f53eac4170a4a25ac8551d316d9fd38e2c58bdf
+FROM gcr.io/distroless/base:nonroot@sha256:9707f365e1f5ec65e4dc7c9b03fa92082f09ac9632686713a9d9065d4d0fd0ff
 COPY --from=webhook /src/cron/internal/webhook/webhook cron/internal/webhook/webhook
 ENTRYPOINT ["cron/internal/webhook/webhook"]
