@@ -8,7 +8,7 @@ require (
 	github.com/google/addlicense v1.1.1
 	github.com/google/ko v0.15.0
 	github.com/goreleaser/goreleaser v1.20.0
-	github.com/onsi/ginkgo/v2 v2.13.0
+	github.com/onsi/ginkgo/v2 v2.14.0
 	google.golang.org/protobuf v1.31.0
 )
 
@@ -153,7 +153,7 @@ require (
 	github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376 // indirect
 	github.com/go-git/go-billy/v5 v5.4.1 // indirect
 	github.com/go-git/go-git/v5 v5.7.0 // indirect
-	github.com/go-logr/logr v1.2.4 // indirect
+	github.com/go-logr/logr v1.3.0 // indirect
 	github.com/go-openapi/analysis v0.21.4 // indirect
 	github.com/go-openapi/errors v0.20.3 // indirect
 	github.com/go-openapi/jsonpointer v0.19.6 // indirect
@@ -362,18 +362,18 @@ require (
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.24.0 // indirect
 	gocloud.dev v0.33.0 // indirect
-	golang.org/x/crypto v0.14.0 // indirect
+	golang.org/x/crypto v0.16.0 // indirect
 	golang.org/x/exp v0.0.0-20230905200255-921286631fa9 // indirect
 	golang.org/x/exp/typeparams v0.0.0-20230307190834-24139beb5833 // indirect
-	golang.org/x/mod v0.13.0 // indirect
-	golang.org/x/net v0.17.0 // indirect
+	golang.org/x/mod v0.14.0 // indirect
+	golang.org/x/net v0.19.0 // indirect
 	golang.org/x/oauth2 v0.12.0 // indirect
-	golang.org/x/sync v0.4.0 // indirect
-	golang.org/x/sys v0.13.0 // indirect
-	golang.org/x/term v0.13.0 // indirect
-	golang.org/x/text v0.13.0 // indirect
+	golang.org/x/sync v0.5.0 // indirect
+	golang.org/x/sys v0.15.0 // indirect
+	golang.org/x/term v0.15.0 // indirect
+	golang.org/x/text v0.14.0 // indirect
 	golang.org/x/time v0.3.0 // indirect
-	golang.org/x/tools v0.14.0 // indirect
+	golang.org/x/tools v0.16.1 // indirect
 	golang.org/x/xerrors v0.0.0-20220907171357-04be3eba64a2 // indirect
 	google.golang.org/api v0.143.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
