@@ -86,7 +86,7 @@ jobs:
           command: make e2e-gitlab-token
 
       - name: codecov
-        uses: codecov/codecov-action@eaaf4bedf32dbdc6b720b63067d99c4d77d6047d # 3.1.4
+        uses: codecov/codecov-action@6d798873df2b1b8e5846dba6fb86631229fbcb17 # 4.4.0
         with:
          files: "*e2e-coverage.out"
          verbose: true
