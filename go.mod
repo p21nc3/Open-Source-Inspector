@@ -1,6 +1,6 @@
 module github.com/ossf/scorecard/v4
 
-go 1.19
+go 1.21
 
 require (
 	cloud.google.com/go/bigquery v1.57.1
@@ -39,7 +39,7 @@ require (
 )
 
 require (
-	github.com/Masterminds/semver/v3 v3.2.1
+	github.com/Masterminds/semver/v3 v3.4.0
 	github.com/caarlos0/env/v6 v6.10.0
 	github.com/gobwas/glob v0.2.3
 	github.com/google/go-github/v53 v53.2.0
