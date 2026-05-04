@@ -63,7 +63,7 @@ jobs:
           echo "go-mod=$(go env GOMODCACHE)" >> "$GITHUB_OUTPUT"
       - name: Cache builds
         # https://github.com/mvdan/github-actions-golang#how-do-i-set-up-caching-between-builds
-        uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84 #v3.3.2
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae #v5.0.5
         with:
           path: |
             ${{ steps.go-cache-paths.outputs.go-build }}
